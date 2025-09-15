@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fresh Coco - Organic Coconuts</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== GALLERY SCROLLING ===== */
+    .gallery-container {
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      padding: 10px 0;
+      background: rgba(255,255,255,0.85);
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 10px;
+      animation: scrollGallery 30s linear infinite;
+    }
+
+    .gallery-track img {
+      height: 180px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-track img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Infinite scroll animation */
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
 </head>
 <body>
 
@@ -89,19 +127,21 @@
 <!-- GALLERY -->
 <section id="gallery">
   <h2>Gallery</h2>
-  <div class="gallery-grid">
-    <img src="images/240_F_118729651_6dUxv595jZYS3lCf1pYuVgYLL8TYRxYN.jpg" alt="Fresh Tender Coconuts">
-    <img src="images/240_F_123320475_F1WxyKSuhembZdfPbGC5hwOr8Py8u39z.jpg" alt="Coconut Shop">
-    <img src="images/240_F_1653392119_CfZf3fNOw6caPSdNuhT5GZmC8lJWe3lk.jpg" alt="Green Coconut Trees">
-    <img src="images/240_F_355100540_vh22MPSLS75XOhCP9xZorl1CtanRkXmW.jpg" alt="Coconut Orchard">
-    <img src="images/240_F_366729054_tOJ7sje6aNVFysjqQmO9woQKdQiHiKqR.jpg" alt="Coconut Farm View">
-    <img src="images/240_F_452419673_sVgC23geilccfExRBrofywfnrpXMChGE.jpg" alt="Coconut Pile">
-    <img src="images/240_F_452419731_8uwLPjvzmFpc2X5vw6KBGuTGA4AG2kCV.jpg" alt="Freshly Cut Coconut">
-    <img src="images/240_F_548879314_b0LiqWwEoUTZt8HEU5AfT8QOxjXvyi28.jpg" alt="Coconut Cutting">
-    <img src="images/240_F_65790022_rGPyKI5AYJANY3orkgN0P0rubioLtpTb.jpg" alt="Harvested Coconuts">
-    <img src="images/240_F_792819065_xvJab1TbPc0C7JUUycwoMIao6UaJRjwE.jpg" alt="Copra Drying">
-    <img src="images/240_F_792820581_uFrynXICX84pfC1R2SgzHb3iEYAWaDeF.jpg" alt="Coconut Water Stall">
-    <img src="images/240_F_99105045_fPmU9ga9qMN0MGjruF8tK25UhW3K0HnV.jpg" alt="Coconut Water Glass">
+  <div class="gallery-container">
+    <div class="gallery-track">
+      <img src="images/240_F_118729651_6dUxv595jZYS3lCf1pYuVgYLL8TYRxYN.jpg" alt="Fresh Tender Coconuts">
+      <img src="images/240_F_123320475_F1WxyKSuhembZdfPbGC5hwOr8Py8u39z.jpg" alt="Coconut Shop">
+      <img src="images/240_F_1653392119_CfZf3fNOw6caPSdNuhT5GZmC8lJWe3lk.jpg" alt="Green Coconut Trees">
+      <img src="images/240_F_355100540_vh22MPSLS75XOhCP9xZorl1CtanRkXmW.jpg" alt="Coconut Orchard">
+      <img src="images/240_F_366729054_tOJ7sje6aNVFysjqQmO9woQKdQiHiKqR.jpg" alt="Coconut Farm View">
+      <img src="images/240_F_452419673_sVgC23geilccfExRBrofywfnrpXMChGE.jpg" alt="Coconut Pile">
+      <img src="images/240_F_452419731_8uwLPjvzmFpc2X5vw6KBGuTGA4AG2kCV.jpg" alt="Freshly Cut Coconut">
+      <img src="images/240_F_548879314_b0LiqWwEoUTZt8HEU5AfT8QOxjXvyi28.jpg" alt="Coconut Cutting">
+      <img src="images/240_F_65790022_rGPyKI5AYJANY3orkgN0P0rubioLtpTb.jpg" alt="Harvested Coconuts">
+      <img src="images/240_F_792819065_xvJab1TbPc0C7JUUycwoMIao6UaJRjwE.jpg" alt="Copra Drying">
+      <img src="images/240_F_792820581_uFrynXICX84pfC1R2SgzHb3iEYAWaDeF.jpg" alt="Coconut Water Stall">
+      <img src="images/240_F_99105045_fPmU9ga9qMN0MGjruF8tK25UhW3K0HnV.jpg" alt="Coconut Water Glass">
+    </div>
   </div>
 </section>
 
@@ -150,5 +190,14 @@
 <script type="module" src="js/order.js"></script>
 <script src="js/script.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+  // Duplicate gallery images for smooth infinite scroll
+  const galleryTrack = document.querySelector('.gallery-track');
+  if (galleryTrack) {
+    galleryTrack.innerHTML += galleryTrack.innerHTML;
+  }
+</script>
+
 </body>
 </html>
