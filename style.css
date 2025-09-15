@@ -207,7 +207,7 @@ section h2:hover {
 .gallery-track {
   display: flex;
   gap: 10px;
-  animation: scrollGallery 30s linear infinite;
+  animation: scrollGallery 40s linear infinite;
 }
 
 .gallery-track img {
@@ -218,14 +218,14 @@ section h2:hover {
   cursor: pointer;
   transition: transform 0.3s;
 }
-
 .gallery-track img:hover {
   transform: scale(1.05);
 }
 
+/* Infinite scroll animation */
 @keyframes scrollGallery {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); } /* scroll full duplicated track */
 }
 
 /* ===== ORDER FORM ===== */
